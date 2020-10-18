@@ -1,12 +1,23 @@
-import React from "react";
+import { Card, CardContent, Typography } from "@material-ui/core";
+import React, { forwardRef } from "react";
 import "./Message.css";
 
-function Message(props) {
+const Message = forwardRef(({ username, message }, ref) => {
+  const isUser = username === message.username;
   return (
-    <div>
-      <h2>{props.text}</h2>
+    <div ref={ref} className={`message ${isUser && "message__user"}`}>
+      <Card className={isUser ? "message__userCard" : "message__guestCard"}>
+        <CardContent>
+          <Typography>
+            <h4 className={isUser ? "message__h4" : ""}>
+              {message.username}: {message.message}
+            </h4>
+          </Typography>
+        </CardContent>
+      </Card>
+      <h2></h2>
     </div>
   );
-}
+});
 
 export default Message;
