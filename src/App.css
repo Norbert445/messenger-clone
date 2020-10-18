@@ -4,9 +4,27 @@
 .app__form {
   padding: 20px;
   position: fixed;
-  bottom: 0;
+  background-color: #e9e9eb;
+  bottom: 20px;
+  z-index: 1;
+  width: 90%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 img {
   width: 100px;
   margin-top: 20px;
+}
+
+.app__formControl {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.app__input {
+  flex: 1;
+}
+
+.app__iconButton {
+  flex: 0;
 }

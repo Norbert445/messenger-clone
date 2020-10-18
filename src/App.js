@@ -5,6 +5,8 @@ import Message from "./Message.js";
 import db from "./firebase.js";
 import firebase from "firebase";
 import FlipMove from "react-flip-move";
+import SendIcon from "@material-ui/icons/Send";
+import { IconButton } from "@material-ui/core";
 
 function App() {
   const [input, setInput] = useState("");
@@ -22,7 +24,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setUsername(prompt("Please enter your name"));
+    setUsername(prompt("Zadajte svoje meno"));
   }, []);
 
   const sendMessage = (e) => {
@@ -38,21 +40,27 @@ function App() {
   return (
     <div className="App">
       <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Facebook_Messenger-512.png" />
-      <h1>Messenger clone</h1>
-      <h2>Welcome dear {username}</h2>
+      <h1>Messenger clone by Norbert Macsali</h1>
+      <h2>Vitajte {username}</h2>
       <form className="app__form">
-        <FormControl>
-          <InputLabel>Enter message...</InputLabel>
-          <Input value={input} onChange={(e) => setInput(e.target.value)} />
-          <Button
+        <FormControl className="app__formControl">
+          <InputLabel>Zadajte spravu</InputLabel>
+          <Input
+            className="app__input"
+            placeholder="Zadajte spravu..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <IconButton
+            className="app__iconButton"
             disabled={!input}
             variant="contained"
             color="primary"
             type="submit"
             onClick={sendMessage}
           >
-            Send message
-          </Button>
+            <SendIcon />
+          </IconButton>
         </FormControl>
       </form>
 
